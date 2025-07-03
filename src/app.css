@@ -1,0 +1,65 @@
+/* src/index.css or src/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ==== Custom Keyframes ==== */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ==== Animation Utilities ==== */
+.animate-fadeInDown {
+  animation: fadeInDown 0.5s ease-out both;
+}
+
+.animate-bounceInLeft {
+  animation: bounceInLeft 0.7s ease-out both;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out both;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease both;
+}
