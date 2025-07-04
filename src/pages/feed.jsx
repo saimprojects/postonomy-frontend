@@ -156,7 +156,7 @@ const Feed = () => {
           <Loader2 className="animate-spin text-purple-600" size={28} />
         </div>
       ) : mixedFeed.length === 0 ? (
-        <p className="text-center text-gray-500 italic">LOGIN NEEDED PLEASE REGISTER YOURSELF</p>
+        <p className="text-center text-gray-500 italic">No Post Fetched Yet OR Login Needed First Register Yourself</p>
       ) : (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
