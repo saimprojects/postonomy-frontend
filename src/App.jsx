@@ -20,7 +20,7 @@ import HelpCenter from "./pages/HelpCenter";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/terms";
 import AdvertiseForm from "./pages/AdvertiseForm";
-import { Analytics } from "@vercel/analytics/react"
+
 
 function App() {
   return (
