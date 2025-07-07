@@ -1,37 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset 
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
   <!-- Homepage -->
   <url>
     <loc>https://www.thepostonomy.com/</loc>
-    <lastmod>2025-07-06</lastmod>
+    <lastmod>2025-07-07</lastmod>
     <priority>1.0</priority>
+    <changefreq>daily</changefreq>
     <image:image>
       <image:loc>https://www.thepostonomy.com/favicon.ico</image:loc>
+      <image:caption>Postonomy - The Smartest Blogging Economy</image:caption>
     </image:image>
-  </url>
-
-  <!-- Posts Page -->
-  <url>
-    <loc>https://www.thepostonomy.com/</loc>
-    <lastmod>2025-07-06</lastmod>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Login -->
-  <url>
-    <loc>https://www.thepostonomy.com/login</loc>
-    <lastmod>2025-07-06</lastmod>
-    <priority>0.6</priority>
   </url>
 
   <!-- Register -->
   <url>
     <loc>https://www.thepostonomy.com/register</loc>
-    <lastmod>2025-07-06</lastmod>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Login -->
+  <url>
+    <loc>https://www.thepostonomy.com/login</loc>
+    <lastmod>2025-07-07</lastmod>
     <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Reset Password -->
+  <url>
+    <loc>https://www.thepostonomy.com/reset-password</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://www.thepostonomy.com/privacy-policy</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.4</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- Terms -->
+  <url>
+    <loc>https://www.thepostonomy.com/terms</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.4</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- Help Center -->
+  <url>
+    <loc>https://www.thepostonomy.com/help</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Monetization -->
+  <url>
+    <loc>https://www.thepostonomy.com/monetization-form</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Advertise -->
+  <url>
+    <loc>https://www.thepostonomy.com/advertise</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Authenticated Routes (indexing allowed only if public) -->
+  <url>
+    <loc>https://www.thepostonomy.com/create-post</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.thepostonomy.com/profile/update</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Earning Dashboard -->
+  <url>
+    <loc>https://www.thepostonomy.com/earningdashboard</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Withdraw -->
+  <url>
+    <loc>https://www.thepostonomy.com/withdraw</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Dynamic Example - Public Profile -->
+  <url>
+    <loc>https://www.thepostonomy.com/profile/saimxd</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Dynamic Example - Post Detail -->
+  <url>
+    <loc>https://www.thepostonomy.com/post/seo-for-creators-2025</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
   </url>
 
 </urlset>
