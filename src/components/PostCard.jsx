@@ -79,7 +79,9 @@ const PostCard = ({ post }) => {
             videoRef.current.play().catch(() => {});
           }
         } else {
-          const timeSpent = watchStart ? Math.floor((Date.now() - watchStart) / 1000) : 0;
+          const timeSpent = watchStart
+            ? Math.floor((Date.now() - watchStart) / 1000)
+            : 0;
           if (timeSpent > 0) {
             API.post(`/postsapi/posts/${post.slug || post.id}/impression/`, {
               time_spent: timeSpent,
@@ -97,7 +99,9 @@ const PostCard = ({ post }) => {
 
   const handleReaction = async (is_like) => {
     try {
-      await API.post(`/postsapi/posts/${post.slug || post.id}/react/`, { is_like });
+      await API.post(`/postsapi/posts/${post.slug || post.id}/react/`, {
+        is_like,
+      });
       const res = await API.get(`/postsapi/posts/${post.slug || post.id}/`);
       setLikes(res.data.likes);
       toast.success(is_like ? "Liked!" : "Disliked!");
@@ -110,7 +114,9 @@ const PostCard = ({ post }) => {
     setShowComments(!showComments);
     if (!showComments) {
       try {
-        const res = await API.get(`/postsapi/posts/${post.slug || post.id}/comments/`);
+        const res = await API.get(
+          `/postsapi/posts/${post.slug || post.id}/comments/`
+        );
         setComments(res.data);
       } catch {
         toast.error("Failed to load comments.");
@@ -126,7 +132,9 @@ const PostCard = ({ post }) => {
         content: commentInput,
       });
       setCommentInput("");
-      const res = await API.get(`/postsapi/posts/${post.slug || post.id}/comments/`);
+      const res = await API.get(
+        `/postsapi/posts/${post.slug || post.id}/comments/`
+      );
       setComments(res.data);
       toast.success("Comment added!");
     } catch {
@@ -183,7 +191,11 @@ const PostCard = ({ post }) => {
           onClick={() => navigate(`/profile/${post.user_public_id}`)}
         >
           <img
-            src={(post.user_image?.replace("http://", "https://")) || `https://ui-avatars.com/api/?name=${post.username}`}
+            src={
+              post.user_image
+                ? post.user_image.replace("http://", "https://")
+                : `https://ui-avatars.com/api/?name=${post.username}`
+            }
             alt="profile"
             className="w-8 h-8 rounded-full object-cover select-none pointer-events-none"
             onContextMenu={(e) => e.preventDefault()}
@@ -191,9 +203,14 @@ const PostCard = ({ post }) => {
           <span className="text-xs font-semibold text-gray-800 flex items-center gap-1">
             {post.username}
             {post.is_badge && (
-              <BadgeCheck size={14} className="text-blue-500" title="Verified" />
+              <BadgeCheck
+                size={14}
+                className="text-blue-500"
+                title="Verified"
+              />
             )}
           </span>
+          media_url
         </div>
 
         <div className="flex items-center gap-2">
@@ -247,7 +264,7 @@ const PostCard = ({ post }) => {
 
       {/* 🖼️ Media */}
       <Link to={`/post/${post.slug || post.id}`}>
-        {post.post_type === "image" && (
+        {post.post_type === "image" && post.media_url && (
           <motion.img
             src={post.media_url.replace("http://", "https://")}
             alt="Post"
@@ -257,7 +274,8 @@ const PostCard = ({ post }) => {
             transition={{ type: "spring", stiffness: 200 }}
           />
         )}
-        {post.post_type === "video" && (
+
+        {post.post_type === "video" && post.media_url && (
           <video
             ref={videoRef}
             src={post.media_url.replace("http://", "https://")}
@@ -268,9 +286,10 @@ const PostCard = ({ post }) => {
             onContextMenu={(e) => e.preventDefault()}
           />
         )}
-        {post.post_type === "document" && (
+
+        {post.post_type === "document" && post.media_url && (
           <a
-            href={post.media_url?.replace("http://", "https://")}
+            href={post.media_url.replace("http://", "https://")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 flex gap-1 items-center underline mt-2 text-xs"
@@ -329,11 +348,18 @@ const PostCard = ({ post }) => {
               <p className="text-xs italic text-gray-500">No comments yet.</p>
             ) : (
               comments.map((c) => (
-                <div key={c.id} className="bg-gray-50 p-2 rounded text-xs shadow-sm">
+                <div
+                  key={c.id}
+                  className="bg-gray-50 p-2 rounded text-xs shadow-sm"
+                >
                   <p className="font-semibold text-purple-700 flex items-center gap-1">
                     {c.user}
                     {c.is_badge && (
-                      <BadgeCheck size={12} className="text-blue-500" title="Verified" />
+                      <BadgeCheck
+                        size={12}
+                        className="text-blue-500"
+                        title="Verified"
+                      />
                     )}
                   </p>
                   <p className="text-gray-800">{c.content}</p>
@@ -345,7 +371,11 @@ const PostCard = ({ post }) => {
                       <p className="font-semibold text-purple-600 flex items-center gap-1">
                         {r.user}
                         {r.is_badge && (
-                          <BadgeCheck size={14} className="text-blue-500" title="Verified" />
+                          <BadgeCheck
+                            size={14}
+                            className="text-blue-500"
+                            title="Verified"
+                          />
                         )}
                       </p>
                       <p>{r.content}</p>
@@ -360,7 +390,10 @@ const PostCard = ({ post }) => {
 
       {/* 🚩 PostReport Modal */}
       {showReportModal && (
-        <PostReport postId={post.slug || post.id} onClose={() => setShowReportModal(false)} />
+        <PostReport
+          postId={post.slug || post.id}
+          onClose={() => setShowReportModal(false)}
+        />
       )}
     </motion.div>
   );
