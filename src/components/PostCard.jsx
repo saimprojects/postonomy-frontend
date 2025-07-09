@@ -50,7 +50,7 @@ const PostCard = ({ post }) => {
   const [checking, setChecking] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
 
-  const isTrending = post.likes >= 10 || post.impressions >= 30;
+  const isTrending = (post.likes || 0) >= 10 || (post.impressions || 0) >= 30;
   const isTop = post.likes >= 20 && post.comments_count >= 10;
 
   useEffect(() => {
@@ -183,7 +183,7 @@ const PostCard = ({ post }) => {
           onClick={() => navigate(`/profile/${post.user_public_id}`)}
         >
           <img
-            src={post.user_image || `https://ui-avatars.com/api/?name=${post.username}`}
+            src={(post.user_image?.replace("http://", "https://")) || `https://ui-avatars.com/api/?name=${post.username}`}
             alt="profile"
             className="w-8 h-8 rounded-full object-cover select-none pointer-events-none"
             onContextMenu={(e) => e.preventDefault()}
@@ -249,7 +249,7 @@ const PostCard = ({ post }) => {
       <Link to={`/post/${post.slug || post.id}`}>
         {post.post_type === "image" && (
           <motion.img
-            src={post.media_url}
+            src={post.media_url.replace("http://", "https://")}
             alt="Post"
             className="rounded-lg w-full max-h-[350px] object-contain mt-2 pointer-events-none select-none"
             onContextMenu={(e) => e.preventDefault()}
@@ -260,7 +260,7 @@ const PostCard = ({ post }) => {
         {post.post_type === "video" && (
           <video
             ref={videoRef}
-            src={post.media_url}
+            src={post.media_url.replace("http://", "https://")}
             muted
             controls
             controlsList="nodownload noplaybackrate"
@@ -270,7 +270,7 @@ const PostCard = ({ post }) => {
         )}
         {post.post_type === "document" && (
           <a
-            href={post.media_url}
+            href={post.media_url?.replace("http://", "https://")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 flex gap-1 items-center underline mt-2 text-xs"
