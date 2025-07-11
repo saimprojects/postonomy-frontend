@@ -8,6 +8,12 @@ const AdCard = ({ ad }) => {
   // Utility: Check if it's a video
   const isVideo = ad.media_url && /\.(mp4|webm|ogg)$/i.test(ad.media_url);
 
+  // ✅ Ensure secure media URL (avoid mixed content)
+  const safeMediaUrl =
+    ad.media_url?.startsWith("http://")
+      ? ad.media_url.replace("http://", "https://")
+      : ad.media_url;
+
   return (
     <motion.a
       href={ad.link}
@@ -25,10 +31,10 @@ const AdCard = ({ ad }) => {
 
       {/* 🎥 Image / Video */}
       <div className="p-4 flex items-center justify-center">
-        {ad.media_url ? (
+        {safeMediaUrl ? (
           isVideo ? (
             <video
-              src={ad.media_url}
+              src={safeMediaUrl}
               controls
               muted
               className="w-full max-h-[300px] rounded-lg object-contain border border-yellow-200 shadow"
@@ -36,7 +42,7 @@ const AdCard = ({ ad }) => {
             />
           ) : (
             <img
-              src={ad.media_url}
+              src={safeMediaUrl}
               alt="Ad"
               className="w-full max-h-[300px] rounded-lg object-contain border border-yellow-200 shadow"
               onContextMenu={(e) => e.preventDefault()}
