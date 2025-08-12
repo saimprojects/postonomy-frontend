@@ -1,38 +1,35 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
-const AdsterraBanner = () => {
+export default function AdBanner() {
   useEffect(() => {
-    // Adsterra settings
-    window.atOptions = {
-      key: "4782c921a02d801996390d6bd797af33",
-      format: "iframe",
-      height: 250,
-      width: 300,
-      params: {},
-    };
+    const script1 = document.createElement("script");
+    script1.type = "text/javascript";
+    script1.innerHTML = `
+      atOptions = {
+        'key' : '4782c921a02d801996390d6bd797af33',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    `;
+    document.body.appendChild(script1);
 
-    // Script tag create
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "//www.highperformanceformat.com/4782c921a02d801996390d6bd797af33/invoke.js";
-    document.getElementById("ad-container").appendChild(script);
+    const script2 = document.createElement("script");
+    script2.type = "text/javascript";
+    script2.src = "//www.highperformanceformat.com/4782c921a02d801996390d6bd797af33/invoke.js";
+    document.body.appendChild(script2);
 
-    // Cleanup
     return () => {
-      document.getElementById("ad-container").innerHTML = "";
+      script1.remove();
+      script2.remove();
     };
   }, []);
 
   return (
-    <div
-      id="ad-container"
-      style={{
-        width: "300px",
-        height: "250px",
-        margin: "0 auto",
-      }}
-    ></div>
+    <div>
+      <h2>Advertisement</h2>
+      <div id="ad-container"></div>
+    </div>
   );
-};
-
-export default AdsterraBanner;
+}
