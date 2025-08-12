@@ -21,15 +21,16 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/terms";
 import AdvertiseForm from "./pages/AdvertiseForm";
 
-
 function App() {
   return (
     <>
       <Navbar />
+      <div className="flex justify-center pt-4">
+        <AdsterraBanner />
+      </div>
 
       {/* Push content down so navbar doesn't overlap */}
       <div className="pt-20 min-h-screen bg-[#0D1117]">
-        
         <Routes>
           <Route path="/" element={<Feed />} />
           <Route path="/register" element={<Register />} />
@@ -46,13 +47,6 @@ function App() {
           <Route path="/terms" element={<TermsAndConditions />} />
           <Route path="/post/:slug" element={<PostDetail />} />
           <Route path="/advertise" element={<AdvertiseForm />} />
-
-
-
-
-        
-
-
 
           <Route
             path="/create-post"
@@ -71,7 +65,6 @@ function App() {
             }
           />
         </Routes>
-      
       </div>
 
       {/* Global Toastify Container */}
