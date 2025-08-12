@@ -20,6 +20,8 @@ import HelpCenter from "./pages/HelpCenter";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/terms";
 import AdvertiseForm from "./pages/AdvertiseForm";
+import AdsterraBanner from "./components/AdsterraBanner";
+
 
 function App() {
   return (
